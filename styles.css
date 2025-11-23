@@ -1,0 +1,106 @@
+/* Earth-tone playful terminal theme */
+:root{
+  --bg:#0f100c; /* very dark olive/brown */
+  --panel:#2b2319; /* panel brown */
+  --edge:#4a371f; /* border */
+  --accent:#d9c9a6; /* warm tan text */
+  --accent-2:#a67c52; /* darker tan for prompts */
+  --muted:#bb9569;
+}
+
+html,body{
+  height:100%;
+  margin:0;
+  background:linear-gradient(180deg,#0b0b08 0%, var(--bg) 100%);
+  color:var(--accent);
+  font-family: "Comic Sans MS", "Comic Neue", "Marker Felt", "Trebuchet MS", sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-size:18px;
+}
+
+body{
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:4rem;
+  background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 2px, transparent 2px, transparent 6px);
+}
+
+/* Terminal window */
+.terminal {
+  width: min(920px, 95%);
+  padding: 2.25rem;
+  border-radius:12px;
+  border: 3px solid var(--edge);
+  background: linear-gradient(180deg, rgba(43,35,25,0.98), rgba(34,28,21,0.98));
+  box-shadow: 0 10px 40px rgba(10,6,4,0.6), inset 0 2px 12px rgba(255,255,255,0.02);
+  color: var(--accent);
+  line-height:1.5;
+  letter-spacing:0.6px;
+  position:relative;
+  transform: rotate(-0.2deg);
+}
+
+/* Playful title and body */
+.terminal h1, .terminal p {
+  margin:0 0 0.9rem 0;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.6), 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.terminal h1{
+  font-size:3rem;
+  font-weight:900;
+  color:var(--accent-2);
+  text-transform:none;
+  letter-spacing:1px;
+  line-height:1.05;
+}
+
+.terminal p{
+  font-size:1.25rem;
+  color:var(--accent);
+}
+
+/* Prompt styling */
+.prompt::before{
+  content: "> ";
+  color: var(--accent-2);
+  font-weight:900;
+  margin-right:0.35rem;
+  font-size:1.05em;
+}
+
+.blink::after{
+  content: "█";
+  display:inline-block;
+  margin-left:0.25rem;
+  color:var(--accent-2);
+  animation: blink 1s steps(2, start) infinite;
+  text-shadow: 0 0 8px rgba(166,124,82,0.28);
+  font-size:0.95em;
+  line-height:0.9;
+}
+
+@keyframes blink{
+  50% { opacity:0; }
+}
+
+/* Card-like paper texture subtle lines */
+.terminal::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;bottom:0;
+  background-image: linear-gradient(transparent 0px, rgba(255,255,255,0.01) 1px);
+  background-size:100% 28px;
+  border-radius:12px;
+  pointer-events:none;
+  mix-blend-mode:overlay;
+}
+
+/* Small screen adjustments */
+@media (max-width:480px){
+  .terminal{ padding:1rem; }
+  .terminal h1{ font-size:1.8rem; }
+  .terminal p{ font-size:1rem; }
+}
